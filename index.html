@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ATM Interface</title>
+  <link rel="stylesheet" href="atm.css">
+</head>
+<body>
+  <div class="atm-container">
+    <div class="atm-screen">
+      <h2>Welcome to MYTH ATM</h2>
+      <div class="atm-section" id="login-section">
+        <p>Enter your 4-digit PIN:</p>
+        <input type="password" maxlength="4" id="pin-input">
+        <button onclick="showMenu()">Login</button>
+      </div>
+
+      <div class="atm-section hidden" id="menu-section">
+        <p>Select Transaction:</p>
+        <button onclick="alert('Balance: ₹25,000')">Check Balance</button>
+        <button onclick="alert('Withdraw function will be handled by Python backend')">Withdraw</button>
+        <button onclick="alert('Deposit function will be handled by Python backend')">Deposit</button>
+        <button onclick="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showMenu() {
+      const pin = document.getElementById('pin-input').value;
+      if (pin === "1234") { // you can connect to python backend to validate this
+        document.getElementById('login-section').classList.add('hidden');
+        document.getElementById('menu-section').classList.remove('hidden');
+      } else {
+        alert("Invalid PIN");
+      }
+    }
+
+    function logout() {
+      document.getElementById('menu-section').classList.add('hidden');
+      document.getElementById('login-section').classList.remove('hidden');
+      document.getElementById('pin-input').value = "";
+    }
+  </script>
+</body>
+</html>
